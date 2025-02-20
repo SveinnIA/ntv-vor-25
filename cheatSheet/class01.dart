@@ -73,4 +73,7 @@ print(capitalizedFullName);
   Bónus task calculate the age from the SSN.
   ADFASDAS
    */
+  int? ssnFixed = int.tryParse(fixSSN1.substring(4,6));
+  int age = 125 - ssnFixed! ;
+  print(age);
 }
