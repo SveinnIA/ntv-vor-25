@@ -28,14 +28,14 @@ while (true){
     sum += prices[inputOrder - 1];
     print('${menu[inputOrder-1]} has been added to your order');
     for(int i = 0; i < orderList.length; i++) {
-      print('${i + 1} . ${menu[i]}');
+      print('${i + 1} . ${orderList[i]}');
     }
     print('Total cost: ${sum.toString()}');
   } else{
     print('Invalid input, try again');
 }
 }
-  print('Are you happy with your order? To remove a burger , enter its corresponding number, else enter 0 to finish');
+  print('Are you happy with your order? To remove a burger , enter its corresponding number within your order, else enter 0 to finish');
   while (true){
     String? adjustOrder = stdin.readLineSync();
     int newOrder = int.tryParse(adjustOrder ?? '')?? -1;
@@ -43,12 +43,14 @@ while (true){
       break;
     }
     if(newOrder > 0 && newOrder <= orderList.length){
+      print('${orderList[newOrder-1]} has been removed from your order');
       orderList.removeAt(newOrder-1);
-      sum -= prices[newOrder -1];
-      print('${menu[newOrder-1]} has been removed from your order');
+      num newPrice = prices[(newOrder-1)];
+      sum -= newPrice;
       for(int i = 0; i < orderList.length; i++){
         print('${i + 1}.${orderList[i]}');
       }
+      print('Total cost: ${sum.toString()}');
     }
   }
 if (orderList.isNotEmpty){
